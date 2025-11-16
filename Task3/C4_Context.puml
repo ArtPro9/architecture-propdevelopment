@@ -1,0 +1,22 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person(client, "Собственник", "Пользуется мобильным приложением")
+System_Boundary( prop, "PropDevelopment") {
+  System(mobile, "Мобильное приложение PropDevelopment", "iOS/Android")
+  System(api, "API PropDevelopment", "Отвечает за доступ к сервисам")
+}
+
+System_Ext(partner, "Платформа «Умный дом»")
+System_Ext(video, "IP-домофоны/камеры", "Устройства на подъездах/въездах")
+System_Ext(barrier, "Шлагбаумы/контроллеры", "Устройства управления доступом")
+
+Rel(client, partner, "Управление видеозвонками/шлагбаумом")
+Rel(client, mobile, "Использует")
+Rel(mobile, api, "Вызовы API", "HTTPS")
+
+Rel(partner, api, "Уведомления о действиях")
+Rel(partner, video, "Биометрия")
+Rel(partner, barrier, "Управление шлагбаумом")
+
+@enduml
