@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: user-admin
+  namespace: platform
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: user-developer
+  namespace: platform
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: user-viewer
+  namespace: platform
